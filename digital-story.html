@@ -7,30 +7,30 @@
   <title>The Disappearing Bookshelf · Digital Story · [YOUR NAME]</title>
   <!-- EDIT: one-sentence summary used by search engines and link previews -->
   <meta name="description" content="A digital story on how screen time is crowding out childhood reading, with an infographic and a video interview.">
-
+ 
   <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-
+ 
   <link rel="stylesheet" href="styles.css">
   <script>document.documentElement.classList.add('js');</script>
   <script src="script.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-
+ 
   <!-- ===================== HEADER (same on every page) ===================== -->
   <header class="site-header">
     <div class="container site-header__inner">
       <!-- EDIT: your name or site title -->
       <a class="site-title" href="index.html">[YOUR NAME]</a>
-
+ 
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
         <span class="nav-toggle__bars" aria-hidden="true"></span>
         <span>Menu</span>
       </button>
-
+ 
       <nav class="nav" id="site-nav" aria-label="Main">
         <ul class="nav__list">
           <li><a class="nav__link" href="index.html">Home</a></li>
@@ -43,9 +43,9 @@
       </nav>
     </div>
   </header>
-
+ 
   <main id="main">
-
+ 
     <!-- ===================== a) HERO / TITLE ===================== -->
     <section class="section section--tight" aria-labelledby="story-title">
       <div class="container">
@@ -60,7 +60,7 @@
         </div>
       </div>
     </section>
-
+ 
     <!-- ===================== b) INTRODUCTION ===================== -->
     <section class="section section--tight" aria-label="Introduction">
       <div class="container container--reading">
@@ -71,41 +71,60 @@
         </div>
       </div>
     </section>
-
+ 
     <!-- ===================== c) INFOGRAPHIC ===================== -->
     <!-- The band's background is --parchment, the same color as the infographic,
          so the image blends into the page. The image is never cropped. -->
     <section class="infographic-band" aria-labelledby="infographic-heading">
       <div class="container">
-        <div class="section-heading section-heading--center">
-          <span class="eyebrow">Infographic</span>
-          <!-- EDIT: short heading for the infographic -->
-          <h2 id="infographic-heading">Screen time vs. storytime, by the numbers</h2>
+        <div class="infographic-layout">
+ 
+          <!-- LEFT: text box. On desktop it stays in view while you scroll past the infographic. -->
+          <div class="infographic-aside">
+            <div class="infographic-aside__box">
+              <span class="eyebrow">Infographic</span>
+              <!-- EDIT: short heading for the infographic -->
+              <h2 id="infographic-heading">Screen time vs. storytime, by the numbers</h2>
+              <!-- EDIT: 1–2 sentences introducing the infographic -->
+              <p>[A short note on what the infographic shows and how to read it.] It follows three chapters: why early reading matters, how reading rates are falling, and how much time screens now take up.</p>
+ 
+              <!-- START optional: key numbers. EDIT: change or delete any row -->
+              <ul class="stat-list">
+                <li><strong>32.7%</strong><span>of 8- to 18-year-olds enjoy reading, the lowest in 20 years</span></li>
+                <li><strong>8h 39m</strong><span>average daily screen time for teens 13 to 18</span></li>
+                <li><strong>1.4M</strong><span>more words heard by kids read to regularly before age 5</span></li>
+              </ul>
+              <!-- END optional: key numbers -->
+ 
+              <div class="infographic__actions">
+                <a class="btn" href="images/disappearing-bookshelf-infographic.png" data-lightbox>View full size</a>
+                <a class="btn btn--outline" href="files/disappearing-bookshelf-infographic.pdf" download>Download PDF</a>
+              </div>
+            </div>
+          </div>
+ 
+          <!-- RIGHT: the infographic. Never cropped or stretched. -->
+          <figure class="infographic">
+            <!-- EDIT: swap the image file at images/disappearing-bookshelf-infographic.png
+                 (keep width/height matching your image's real pixel size) -->
+            <a class="infographic-trigger" href="images/disappearing-bookshelf-infographic.png" data-lightbox
+               aria-label="View the infographic full size">
+              <img
+                src="images/disappearing-bookshelf-infographic.png"
+                width="1620" height="3750"
+                loading="lazy" decoding="async"
+                alt="Infographic titled The Disappearing Bookshelf: the dangers of letting screentime overpower storytime. Central idea: screens fill growing hours, but shared reading builds the language and literacy skills they don't. Chapter I lists the benefits of early reading, including brain growth, stronger language skills, 1.4 million more words heard by age 5, confidence and focus, and emotional insight. Chapter II shows falling reading rates: only 32.7% of 8- to 18-year-olds enjoy reading, the lowest in 20 years; 18.7% read daily in their free time; 44.5% of 5- to 8-year-olds read daily; and reading-score drops were 1.5 times bigger in grades 3 to 5 than in middle school. Chapter III charts average daily screen time by age, rising from about 1 hour under age 2 to 2 hours 8 minutes at ages 2 to 4, 3 hours 28 minutes at 5 to 8, 5 hours 33 minutes at 8 to 12, and 8 hours 39 minutes for teens 13 to 18. The epilogue recommends reading together every day from birth, swapping a screen for a book in the car, at meals and at bedtime, and letting older kids choose books tied to their hobbies.">
+            </a>
+            <figcaption>
+              <!-- EDIT: caption / credit -->
+              Infographic by [YOUR NAME]. Data from the American Academy of Pediatrics, Common Sense Media, the National Literacy Trust and others (see Sources).
+            </figcaption>
+          </figure>
+ 
         </div>
-
-        <figure class="infographic">
-          <!-- EDIT: swap the image file at images/disappearing-bookshelf-infographic.png
-               (keep width/height matching your image's real pixel size) -->
-          <a class="infographic-trigger" href="images/disappearing-bookshelf-infographic.png" data-lightbox
-             aria-label="View the infographic full size">
-            <img
-              src="images/disappearing-bookshelf-infographic.png"
-              width="1620" height="3750"
-              loading="lazy" decoding="async"
-              alt="Infographic titled The Disappearing Bookshelf: the dangers of letting screentime overpower storytime. Central idea: screens fill growing hours, but shared reading builds the language and literacy skills they don't. Chapter I lists the benefits of early reading, including brain growth, stronger language skills, 1.4 million more words heard by age 5, confidence and focus, and emotional insight. Chapter II shows falling reading rates: only 32.7% of 8- to 18-year-olds enjoy reading, the lowest in 20 years; 18.7% read daily in their free time; 44.5% of 5- to 8-year-olds read daily; and reading-score drops were 1.5 times bigger in grades 3 to 5 than in middle school. Chapter III charts average daily screen time by age, rising from about 1 hour under age 2 to 2 hours 8 minutes at ages 2 to 4, 3 hours 28 minutes at 5 to 8, 5 hours 33 minutes at 8 to 12, and 8 hours 39 minutes for teens 13 to 18. The epilogue recommends reading together every day from birth, swapping a screen for a book in the car, at meals and at bedtime, and letting older kids choose books tied to their hobbies.">
-          </a>
-          <figcaption>
-            <!-- EDIT: caption / credit -->
-            Infographic by [YOUR NAME]. Data from the American Academy of Pediatrics, Common Sense Media, the National Literacy Trust and others (see Sources).
-            <span class="infographic__actions">
-              <a href="images/disappearing-bookshelf-infographic.png" data-lightbox>View full size</a>
-              <a href="files/disappearing-bookshelf-infographic.pdf" download>Download PDF</a>
-            </span>
-          </figcaption>
-        </figure>
       </div>
     </section>
-
+ 
     <!-- ===================== d) VIDEO INTERVIEW ===================== -->
     <section class="section" aria-labelledby="video-heading">
       <div class="container container--reading">
@@ -116,7 +135,7 @@
           <!-- EDIT: one-sentence description of the interview -->
           <p>[One sentence describing who you interviewed and what they discuss.]</p>
         </div>
-
+ 
         <div class="video-frame">
           <!-- EDIT: replace with your interview embed
                1. On YouTube: Share → Embed → copy the <iframe> code.
@@ -124,7 +143,7 @@
                2. DELETE the whole <div class="video-placeholder"> ... </div> block below.
                3. Paste your <iframe> here. Delete its width="" and height="" attributes;
                   the frame resizes itself to 16:9. Example:
-
+ 
                <iframe src="https://www.youtube.com/embed/VIDEO_ID"
                        title="[Interview title]" loading="lazy"
                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -140,12 +159,12 @@
         <p class="video-meta">[Runtime, e.g. 4:30] · Filmed and edited by [YOUR NAME]</p>
       </div>
     </section>
-
-
+ 
+ 
     <!-- ===================== e) OPTIONAL EXTRAS =====================
          Each block below is independent. Delete any you don't need,
          from its START comment to its END comment. -->
-
+ 
     <!-- START optional: pull quote -->
     <section class="section section--tight" aria-label="Pull quote">
       <div class="container container--reading">
@@ -157,7 +176,7 @@
       </div>
     </section>
     <!-- END optional: pull quote -->
-
+ 
     <!-- START optional: epilogue / takeaways -->
     <section class="section section--tight" aria-labelledby="epilogue-heading">
       <div class="container container--reading">
@@ -174,7 +193,7 @@
       </div>
     </section>
     <!-- END optional: epilogue / takeaways -->
-
+ 
     <!-- START optional: sources -->
     <section class="section section--tight" aria-labelledby="sources-heading">
       <div class="container container--reading">
@@ -193,9 +212,9 @@
       </div>
     </section>
     <!-- END optional: sources -->
-
+ 
   </main>
-
+ 
   <!-- ===================== FOOTER (same on every page) ===================== -->
   <footer class="site-footer">
     <div class="container site-footer__inner">
@@ -209,7 +228,7 @@
       </ul>
     </div>
   </footer>
-
+ 
   <!-- Lightbox for "View full size" (opened by script.js) -->
   <dialog class="lightbox" id="lightbox" aria-label="Infographic, full size">
     <div class="lightbox__bar">
@@ -222,3 +241,4 @@
   </dialog>
 </body>
 </html>
+ 
