@@ -1,7 +1,7 @@
 /* =====================================================================
    DIGITAL STORY PACKAGE — shared stylesheet
    A quieter, "dialed-back" take on The Disappearing Bookshelf infographic.
-
+ 
    HOW THIS FILE IS ORGANIZED
      1. Design tokens (colors, fonts, spacing)  ← change the whole look here
      2. Base / reset
@@ -14,8 +14,8 @@
      8. Lightbox
      9. Motion + accessibility preferences
    ===================================================================== */
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    1. DESIGN TOKENS
    Every color, font and spacing value used on the site lives here.
@@ -33,11 +33,11 @@
   --ink:          #120F0C;  /* body text & headings */
   --ink-soft:     #5F4138;  /* captions, metadata, secondary text */
   --white:        #FFFFFF;
-
+ 
   /* Fonts */
   --font-body:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-display: "Fredoka", "Inter", system-ui, sans-serif; /* site title & big page titles only */
-
+ 
   /* Type scale */
   --text-sm:   0.875rem;   /* 14px */
   --text-base: 1.0625rem;  /* 17px */
@@ -46,7 +46,7 @@
   --text-2xl:  clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);   /* section headings */
   --text-3xl:  clamp(2.25rem, 1.5rem + 3.2vw, 3.75rem);  /* page titles */
   --leading:   1.65;
-
+ 
   /* Spacing scale */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
@@ -57,12 +57,12 @@
   --space-7: 3rem;
   --space-8: 4.5rem;
   --space-9: 6rem;
-
+ 
   /* Layout widths */
   --max-width:     1100px;  /* general content */
   --reading-width: 760px;   /* reading column (articles, video) */
   --gutter:        clamp(1rem, 4vw, 2rem);
-
+ 
   /* Shapes & effects */
   --radius:     15px;
   --radius-sm:  8px;
@@ -71,20 +71,20 @@
   --header-h:   64px;
   --transition: 180ms ease;
 }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    2. BASE / RESET
    --------------------------------------------------------------------- */
 *,
 *::before,
 *::after { box-sizing: border-box; }
-
+ 
 html {
   -webkit-text-size-adjust: 100%;
   scroll-padding-top: calc(var(--header-h) + 1rem); /* anchors clear the sticky header */
 }
-
+ 
 body {
   margin: 0;
   background: var(--paper);
@@ -96,10 +96,10 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-
+ 
 img, video, iframe { max-width: 100%; display: block; }
 img { height: auto; }
-
+ 
 h1, h2, h3, h4 {
   font-family: var(--font-body);
   font-weight: 800;
@@ -110,10 +110,10 @@ h1, h2, h3, h4 {
 }
 h2 { font-size: var(--text-2xl); }
 h3, .h3 { font-size: var(--text-xl); letter-spacing: -0.01em; }
-
+ 
 p { margin: 0 0 var(--space-4); }
 p:last-child { margin-bottom: 0; }
-
+ 
 a {
   color: var(--crimson);
   text-decoration-thickness: 1px;
@@ -121,14 +121,14 @@ a {
   transition: color var(--transition);
 }
 a:hover { color: var(--crimson-dark); }
-
+ 
 /* Visible, consistent focus ring for keyboard users */
 :focus-visible {
   outline: 2px solid var(--crimson);
   outline-offset: 3px;
   border-radius: 4px;
 }
-
+ 
 /* Skip link: hidden until focused */
 .skip-link {
   position: absolute;
@@ -143,7 +143,7 @@ a:hover { color: var(--crimson-dark); }
   text-decoration: none;
 }
 .skip-link:focus { top: var(--space-3); color: var(--white); }
-
+ 
 /* Screen-reader-only text */
 .visually-hidden {
   position: absolute !important;
@@ -152,8 +152,8 @@ a:hover { color: var(--crimson-dark); }
   overflow: hidden; clip: rect(0 0 0 0);
   white-space: nowrap; border: 0;
 }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    3. LAYOUT HELPERS
    --------------------------------------------------------------------- */
@@ -166,12 +166,12 @@ a:hover { color: var(--crimson-dark); }
 .container--reading {
   max-width: calc(var(--reading-width) + var(--gutter) * 2);
 }
-
+ 
 .section { padding-block: var(--space-8); }
 .section--tight { padding-block: var(--space-7); }
 .section + .section:not(.section--parchment) { padding-top: 0; }   /* avoid doubled gaps between sections */
 .section--parchment { background: var(--parchment); }
-
+ 
 /* Centered short gold divider between big blocks */
 .divider {
   width: 64px;
@@ -180,12 +180,12 @@ a:hover { color: var(--crimson-dark); }
   border-top: 2px solid var(--gold);
   margin: var(--space-8) auto;
 }
-
+ 
 .lead { font-size: var(--text-lg); color: var(--ink); }
 .muted { color: var(--ink-soft); }
 .small { font-size: var(--text-sm); }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    4. HEADER + NAVIGATION
    --------------------------------------------------------------------- */
@@ -198,7 +198,7 @@ a:hover { color: var(--crimson-dark); }
   -webkit-backdrop-filter: saturate(140%) blur(8px);
   border-bottom: var(--hairline);
 }
-
+ 
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -206,7 +206,7 @@ a:hover { color: var(--crimson-dark); }
   gap: var(--space-4);
   min-height: var(--header-h);
 }
-
+ 
 .site-title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -217,7 +217,7 @@ a:hover { color: var(--crimson-dark); }
   white-space: nowrap;
 }
 .site-title:hover { color: var(--crimson-dark); }
-
+ 
 .nav__list {
   display: flex;
   align-items: center;
@@ -226,7 +226,7 @@ a:hover { color: var(--crimson-dark); }
   margin: 0;
   padding: 0;
 }
-
+ 
 .nav__link {
   position: relative;
   display: block;
@@ -237,7 +237,7 @@ a:hover { color: var(--crimson-dark); }
   text-decoration: none;
 }
 .nav__link:hover { color: var(--crimson); }
-
+ 
 /* Current page: crimson text + thin gold underline */
 .nav__link[aria-current="page"] { color: var(--crimson); font-weight: 600; }
 .nav__link[aria-current="page"]::after {
@@ -249,7 +249,7 @@ a:hover { color: var(--crimson-dark); }
   height: 2px;
   background: var(--gold);
 }
-
+ 
 /* Hamburger button (hidden on desktop) */
 .nav-toggle {
   display: none;
@@ -281,10 +281,10 @@ a:hover { color: var(--crimson-dark); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
 .nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-6px) rotate(-45deg); }
-
+ 
 @media (max-width: 760px) {
   .nav-toggle { display: inline-flex; }
-
+ 
   .nav {
     position: absolute;
     top: 100%;
@@ -297,7 +297,7 @@ a:hover { color: var(--crimson-dark); }
   /* Menu is hidden only once JS has loaded (so no-JS visitors still get links) */
   .js .nav { display: none; }
   .js .nav.is-open { display: block; }
-
+ 
   .nav__list {
     flex-direction: column;
     align-items: stretch;
@@ -314,8 +314,8 @@ a:hover { color: var(--crimson-dark); }
   html:not(.js) .site-header__inner { flex-wrap: wrap; }
   html:not(.js) .nav-toggle { display: none; }
 }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    5. FOOTER
    --------------------------------------------------------------------- */
@@ -337,12 +337,12 @@ a:hover { color: var(--crimson-dark); }
 .footer-links { display: flex; flex-wrap: wrap; gap: var(--space-4); list-style: none; margin: 0; padding: 0; }
 .footer-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
 .footer-links a:hover { color: var(--crimson); text-decoration: underline; }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    6. REUSABLE COMPONENTS
    --------------------------------------------------------------------- */
-
+ 
 /* --- Eyebrow + heading + gold rule (the "Chapter I:" look) ----------- */
 .eyebrow {
   display: block;
@@ -366,7 +366,7 @@ a:hover { color: var(--crimson-dark); }
 .section-heading p { margin-top: var(--space-4); color: var(--ink-soft); }
 .section-heading--center { text-align: center; }
 .section-heading--center::after { margin-inline: auto; }
-
+ 
 /* Big page title (Fredoka) for simple pages */
 .page-title {
   font-family: var(--font-display);
@@ -376,7 +376,7 @@ a:hover { color: var(--crimson-dark); }
   line-height: 1.05;
 }
 .page-intro { padding-top: var(--space-8); padding-bottom: var(--space-6); }
-
+ 
 /* --- Hero block: crimson panel + thin gold inset border -------------- */
 .hero {
   position: relative;
@@ -414,12 +414,12 @@ a:hover { color: var(--crimson-dark); }
   color: var(--cream);
 }
 .hero__byline .sep { margin-inline: var(--space-2); color: var(--yellow); }
-
+ 
 /* Smaller hero variant (used on Home) */
 .hero--small { padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 5vw, 3rem); text-align: left; }
 .hero--small .hero__title { margin-left: 0; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); }
 .hero--small .hero__dek { margin-left: 0; }
-
+ 
 /* --- Callout: crimson left bar + bold crimson lead-in ---------------- */
 .callout {
   background: var(--cream);
@@ -431,7 +431,7 @@ a:hover { color: var(--crimson-dark); }
 .callout__lead { font-weight: 700; color: var(--crimson); }
 .callout--parchment { background: var(--parchment); }
 .callout p + p { margin-top: var(--space-4); }
-
+ 
 /* --- Pull quote ------------------------------------------------------ */
 .pullquote {
   margin: 0;
@@ -445,7 +445,7 @@ a:hover { color: var(--crimson-dark); }
   letter-spacing: -0.015em;
 }
 .pullquote footer { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--ink-soft); }
-
+ 
 /* --- Cards ---------------------------------------------------------- */
 .card {
   display: flex;
@@ -466,13 +466,13 @@ a:hover { color: var(--crimson-dark); }
 .card__link { margin-top: auto; padding-top: var(--space-3); font-weight: 600; text-decoration: none; }
 .card__link::after { content: ""; position: absolute; inset: 0; } /* whole card clickable */
 .card { position: relative; }
-
+ 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: var(--space-6);
 }
-
+ 
 /* --- Buttons --------------------------------------------------------- */
 .btn {
   display: inline-flex;
@@ -493,7 +493,7 @@ a:hover { color: var(--crimson-dark); }
 .btn--outline { background: transparent; color: var(--crimson); }
 .btn--outline:hover { background: var(--crimson); color: var(--white); }
 .btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
-
+ 
 /* --- Chips (skills / tools) ----------------------------------------- */
 .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
 .chips li {
@@ -504,7 +504,7 @@ a:hover { color: var(--crimson-dark); }
   font-size: var(--text-sm);
   font-weight: 500;
 }
-
+ 
 /* --- Checklist (Epilogue / Takeaways) ------------------------------- */
 .checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
 .checklist li { position: relative; padding-left: 2rem; }
@@ -519,13 +519,13 @@ a:hover { color: var(--crimson-dark); }
   border-bottom: 3px solid var(--crimson);
   transform: rotate(-45deg);
 }
-
+ 
 /* --- Sources list ---------------------------------------------------- */
 .sources { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.55; padding-left: 1.2rem; margin: 0; }
 .sources li + li { margin-top: var(--space-2); }
 .sources a { color: var(--ink-soft); word-break: break-word; }
 .sources a:hover { color: var(--crimson); }
-
+ 
 /* --- Placeholder boxes (swap these for real images) ----------------- */
 .placeholder {
   display: grid;
@@ -544,12 +544,12 @@ a:hover { color: var(--crimson-dark); }
 .placeholder--portrait { aspect-ratio: 4 / 5; }
 .placeholder--wide     { aspect-ratio: 3 / 2; }
 .placeholder--card     { aspect-ratio: 16 / 10; border-radius: 0; border: 0; }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    7. PAGE-SPECIFIC PIECES
    --------------------------------------------------------------------- */
-
+ 
 /* --- Home intro ------------------------------------------------------ */
 .intro-grid {
   display: grid;
@@ -571,18 +571,63 @@ a:hover { color: var(--crimson-dark); }
   .intro-grid { grid-template-columns: 1fr; gap: var(--space-6); }
   .intro-grid .headshot { order: -1; max-width: 160px; }
 }
-
+ 
 /* --- Infographic band ----------------------------------------------- */
+/* Two columns on desktop: text box on the left, infographic on the right.
+   To make the infographic bigger or smaller, change --infographic-width. */
 .infographic-band {
+  --infographic-width: 560px;
   background: var(--parchment);   /* matches the infographic's own background */
   padding-block: var(--space-8);
   margin-block: var(--space-5);
 }
-.infographic-band .section-heading p { color: var(--ink-soft); }
-.infographic {
-  max-width: 800px;
-  margin: 0 auto;
+.infographic-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, var(--infographic-width));
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
 }
+.infographic-aside {
+  position: sticky;                              /* stays in view while scrolling */
+  top: calc(var(--header-h) + var(--space-6));
+}
+.infographic-aside__box {
+  background: var(--cream);
+  border: var(--hairline);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+.infographic-aside__box h2 { margin-bottom: var(--space-3); }
+.infographic-aside__box h2::after {              /* short gold rule */
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-top: var(--space-3);
+  background: var(--gold);
+}
+.infographic-aside__box > p { color: var(--ink-soft); }
+ 
+/* Key numbers inside the text box */
+.stat-list { list-style: none; margin: var(--space-5) 0 0; padding: 0; }
+.stat-list li {
+  display: grid;
+  grid-template-columns: 6.2rem 1fr;
+  gap: var(--space-4);
+  align-items: baseline;
+  padding-block: var(--space-3);
+  border-top: 1px solid rgba(190, 166, 101, 0.55);
+}
+.stat-list strong {
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--crimson);
+  line-height: 1;
+}
+.stat-list span { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.45; }
+ 
+.infographic { margin: 0; }
 .infographic img {
   width: 100%;
   height: auto;            /* never crop or stretch */
@@ -590,19 +635,17 @@ a:hover { color: var(--crimson-dark); }
   /* no shadow on purpose: the image should melt into the parchment band */
 }
 .infographic figcaption {
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
   font-size: var(--text-sm);
   color: var(--ink-soft);
-  text-align: center;
 }
 .infographic__actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-3) var(--space-5);
-  margin-top: var(--space-3);
+  gap: var(--space-3);
+  margin-top: var(--space-5);
 }
-.infographic__actions a { font-weight: 600; font-size: var(--text-sm); }
+.infographic__actions .btn { padding: 0.6rem 1.1rem; font-size: var(--text-sm); }
 .infographic-trigger {
   display: block;
   padding: 0;
@@ -611,7 +654,14 @@ a:hover { color: var(--crimson-dark); }
   cursor: zoom-in;
   width: 100%;
 }
-
+ 
+/* Tablets and phones: stack the text box above the infographic */
+@media (max-width: 860px) {
+  .infographic-layout { grid-template-columns: 1fr; }
+  .infographic-aside { position: static; }
+  .infographic { max-width: 560px; margin-inline: auto; width: 100%; }
+}
+ 
 /* --- Video embed ---------------------------------------------------- */
 .video-frame {
   position: relative;
@@ -661,7 +711,7 @@ a:hover { color: var(--crimson-dark); }
 }
 .video-placeholder strong { color: var(--ink); font-size: var(--text-base); }
 .video-meta { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--ink-soft); }
-
+ 
 /* --- Photo essay ----------------------------------------------------- */
 .photo-grid {
   display: grid;
@@ -672,14 +722,14 @@ a:hover { color: var(--crimson-dark); }
 .photo img { width: 100%; border-radius: var(--radius-sm); }
 .photo figcaption { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.5; }
 .photo--wide { grid-column: 1 / -1; }
-
+ 
 .photo-stack { display: grid; gap: var(--space-7); }
-
+ 
 /* --- Article body (written work sample) ----------------------------- */
 .prose > * + * { margin-top: var(--space-4); }
 .prose h2 { margin-top: var(--space-7); font-size: var(--text-xl); }
 .prose p { margin-bottom: 0; }
-
+ 
 /* --- About ---------------------------------------------------------- */
 .about-grid {
   display: grid;
@@ -692,7 +742,7 @@ a:hover { color: var(--crimson-dark); }
   .about-grid .headshot { max-width: 200px; }
 }
 .subhead { font-size: var(--text-lg); margin: var(--space-7) 0 var(--space-4); }
-
+ 
 /* --- Contact -------------------------------------------------------- */
 .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
 .contact-row {
@@ -712,7 +762,7 @@ a:hover { color: var(--crimson-dark); }
 .contact-row__label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); }
 .contact-row__value { display: block; font-weight: 600; word-break: break-word; }
 .contact-row__arrow { color: var(--crimson); font-weight: 600; flex-shrink: 0; }
-
+ 
 .form { display: grid; gap: var(--space-4); }
 .form label { display: block; font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-1); }
 .form input,
@@ -729,8 +779,8 @@ a:hover { color: var(--crimson-dark); }
 .form textarea:focus { outline: 2px solid var(--crimson); outline-offset: 1px; border-color: var(--crimson); }
 .form textarea { min-height: 150px; resize: vertical; }
 .form .btn { justify-self: start; }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    8. LIGHTBOX (uses the native <dialog> element)
    --------------------------------------------------------------------- */
@@ -761,15 +811,15 @@ a:hover { color: var(--crimson-dark); }
 .lightbox__scroll { max-height: calc(100vh - 2rem - 56px); overflow-y: auto; padding: var(--space-4); }
 .lightbox__scroll img { width: 100%; height: auto; }
 .lightbox__close { padding: 0.4rem 0.9rem; font-size: var(--text-sm); }
-
-
+ 
+ 
 /* ---------------------------------------------------------------------
    9. MOTION + ACCESSIBILITY PREFERENCES
    --------------------------------------------------------------------- */
 /* Gentle fade-in for elements with the .reveal class (added by script.js) */
 .js .reveal { opacity: 0; transform: translateY(10px); transition: opacity 600ms ease, transform 600ms ease; }
 .js .reveal.is-visible { opacity: 1; transform: none; }
-
+ 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -779,7 +829,7 @@ a:hover { color: var(--crimson-dark); }
   .js .reveal { opacity: 1; transform: none; }
   .card:hover, .contact-row:hover { transform: none; }
 }
-
+ 
 /* ---------------------------------------------------------------------
    SMALL-SCREEN TWEAKS (phones)
    --------------------------------------------------------------------- */
@@ -790,3 +840,4 @@ a:hover { color: var(--crimson-dark); }
   .section { padding-block: var(--space-7); }
   .infographic-band { padding-block: var(--space-7); }
 }
+ 
