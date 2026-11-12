@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>Contact · [YOUR NAME]</title>
+  <meta name="description" content="Get in touch with [YOUR NAME].">
+
+  <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- EDIT: your name or site title -->
+      <a class="site-title" href="index.html">[YOUR NAME]</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <!-- aria-current="page" marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <!-- marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="digital-story.html">Digital Story</a></li>
+          <li><a class="nav__link" href="work-sample.html">Work Sample</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html" aria-current="page">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-intro" aria-labelledby="page-title">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <span class="eyebrow">Contact</span>
+          <h1 class="page-title" id="page-title">Let's talk</h1>
+        </div>
+        <!-- EDIT: invitation line -->
+        <p class="lead">[Have a story tip, a question about my work, or an opportunity? I'd love to hear from you.]</p>
+      </div>
+    </section>
+
+    <section class="section section--tight" aria-label="Contact links">
+      <div class="container container--reading">
+        <!-- EDIT: replace the href and the visible text in each row -->
+        <ul class="contact-list">
+          <li>
+            <a class="contact-row" href="mailto:[YOUR EMAIL]">
+              <span><span class="contact-row__label">Email</span><span class="contact-row__value">[YOUR EMAIL]</span></span>
+              <span class="contact-row__arrow" aria-hidden="true">→</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-row" href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">
+              <span><span class="contact-row__label">LinkedIn</span><span class="contact-row__value">linkedin.com/in/[YOUR-LINKEDIN]</span></span>
+              <span class="contact-row__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+          <li>
+            <a class="contact-row" href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">
+              <span><span class="contact-row__label">Instagram</span><span class="contact-row__value">@[YOUR-INSTAGRAM]</span></span>
+              <span class="contact-row__arrow" aria-hidden="true">↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- START optional: contact form
+         NOTE: this form is visual only. A static site can't send email by itself.
+         To make it work, sign up for a free form service such as Formspree
+         (formspree.io), then change action="#" to the URL they give you, e.g.
+         action="https://formspree.io/f/abcdwxyz" method="POST". -->
+    <section class="section section--tight" aria-labelledby="form-heading">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <span class="eyebrow">Or send a note</span>
+          <h2 id="form-heading" class="h3">Message me</h2>
+        </div>
+        <form class="form" action="#" method="POST">
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+          <button class="btn" type="submit">Send message</button>
+        </form>
+      </div>
+    </section>
+    <!-- END optional: contact form -->
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- EDIT: [YEAR] fills in automatically; replace [YOUR NAME] -->
+      <p>© <span data-year>[YEAR]</span> [YOUR NAME] · Student at UNC-Chapel Hill</p>
+      <ul class="footer-links">
+        <!-- EDIT: your email, LinkedIn and Instagram links -->
+        <li><a href="mailto:[YOUR EMAIL]">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

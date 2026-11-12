@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>About · [YOUR NAME]</title>
+  <meta name="description" content="About [YOUR NAME], a multimedia storyteller at UNC-Chapel Hill.">
+
+  <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- EDIT: your name or site title -->
+      <a class="site-title" href="index.html">[YOUR NAME]</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <!-- aria-current="page" marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <!-- marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="digital-story.html">Digital Story</a></li>
+          <li><a class="nav__link" href="work-sample.html">Work Sample</a></li>
+          <li><a class="nav__link" href="about.html" aria-current="page">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="page-intro" aria-labelledby="page-title">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">About</span>
+          <h1 class="page-title" id="page-title">Hi, I'm [YOUR NAME]</h1>
+        </div>
+
+        <div class="about-grid">
+          <!-- EDIT: replace with <img src="images/headshot.jpg" alt="Portrait of [YOUR NAME]" width="800" height="1000" style="border-radius: var(--radius);"> -->
+          <div class="headshot">
+            <div class="placeholder placeholder--portrait">[HEADSHOT]</div>
+          </div>
+
+          <div style="max-width: var(--reading-width);">
+            <!-- EDIT: your bio (2–3 paragraphs) -->
+            <p class="lead">[BIO PARAGRAPH 1] I'm a [year/major] at the UNC Hussman School of Journalism and Media, focused on [your focus, e.g. visual and data storytelling].</p>
+            <p>[BIO PARAGRAPH 2] Where you've worked or published, organizations you're part of, and the kinds of stories you like to report.</p>
+            <p>[BIO PARAGRAPH 3] A personal note: where you're from, what you do when you're not reporting, or what you're looking for next.</p>
+
+            <h2 class="subhead">Skills &amp; tools</h2>
+            <!-- EDIT: add or remove skills -->
+            <ul class="chips">
+              <li>Adobe Premiere Pro</li>
+              <li>Photoshop</li>
+              <li>Lightroom</li>
+              <li>Canva</li>
+              <li>AP Style</li>
+              <li>WordPress</li>
+              <li>Interviewing</li>
+              <li>Data visualization</li>
+            </ul>
+
+            <!-- START optional: résumé button. EDIT: put your résumé at files/resume.pdf -->
+            <div class="btn-row">
+              <a class="btn" href="files/resume.pdf" download>Download résumé (PDF)</a>
+              <a class="btn btn--outline" href="contact.html">Get in touch</a>
+            </div>
+            <!-- END optional: résumé button -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- EDIT: [YEAR] fills in automatically; replace [YOUR NAME] -->
+      <p>© <span data-year>[YEAR]</span> [YOUR NAME] · Student at UNC-Chapel Hill</p>
+      <ul class="footer-links">
+        <!-- EDIT: your email, LinkedIn and Instagram links -->
+        <li><a href="mailto:[YOUR EMAIL]">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

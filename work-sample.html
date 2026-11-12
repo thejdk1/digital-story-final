@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>[WORK SAMPLE TITLE] · Work Sample · [YOUR NAME]</title>
+  <meta name="description" content="A work sample by [YOUR NAME]: [short description].">
+
+  <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- EDIT: your name or site title -->
+      <a class="site-title" href="index.html">[YOUR NAME]</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <!-- aria-current="page" marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <!-- marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="digital-story.html">Digital Story</a></li>
+          <li><a class="nav__link" href="work-sample.html" aria-current="page">Work Sample</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== TITLE + INTRO ===================== -->
+    <section class="page-intro" aria-labelledby="page-title">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <!-- EDIT: type of work, e.g. "Photo Essay", "Feature Story", "Video" -->
+          <span class="eyebrow">Work Sample · Photo Essay</span>
+          <!-- EDIT: [WORK SAMPLE TITLE] -->
+          <h1 class="page-title" id="page-title">[WORK SAMPLE TITLE]</h1>
+        </div>
+        <!-- EDIT: intro paragraph -->
+        <p class="lead">[INTRO PARAGRAPH] Set the scene: what this project is about, where and when you made it, and why it matters.</p>
+        <p class="muted small">By [YOUR NAME] · [DATE] · [CLASS OR PUBLICATION]</p>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         OPTION A (active): PHOTO ESSAY: responsive grid.
+         Add/remove <figure class="photo"> blocks. Add class "photo--wide"
+         to make a photo span the full width.
+         ===================================================================== -->
+    <section class="section section--tight" aria-label="Photo essay">
+      <div class="container">
+        <div class="photo-grid">
+          <figure class="photo photo--wide">
+            <!-- EDIT: replace with <img src="images/photo-1.jpg" alt="[Describe photo 1]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 1]</div>
+            <figcaption>[Caption for photo 1: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+          <figure class="photo">
+            <!-- EDIT: replace with <img src="images/photo-2.jpg" alt="[Describe photo 2]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 2]</div>
+            <figcaption>[Caption for photo 2: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+          <figure class="photo">
+            <!-- EDIT: replace with <img src="images/photo-3.jpg" alt="[Describe photo 3]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 3]</div>
+            <figcaption>[Caption for photo 3: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+          <figure class="photo">
+            <!-- EDIT: replace with <img src="images/photo-4.jpg" alt="[Describe photo 4]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 4]</div>
+            <figcaption>[Caption for photo 4: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+          <figure class="photo">
+            <!-- EDIT: replace with <img src="images/photo-5.jpg" alt="[Describe photo 5]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 5]</div>
+            <figcaption>[Caption for photo 5: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+          <figure class="photo photo--wide">
+            <!-- EDIT: replace with <img src="images/photo-6.jpg" alt="[Describe photo 6]" width="1600" height="1067" loading="lazy"> -->
+            <div class="placeholder placeholder--wide">[PHOTO 6]</div>
+            <figcaption>[Caption for photo 6: who, what, where, when.] Photo by [YOUR NAME].</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPTION A2 (alternative layout): stacked full-width photos in the reading column.
+         To use: delete the grid section above and remove the comment markers around this.
+    <section class="section section--tight" aria-label="Photo essay">
+      <div class="container container--reading photo-stack">
+        <figure class="photo">
+          <img src="images/photo-1.jpg" alt="[Describe photo 1]" width="1600" height="1067" loading="lazy">
+          <figcaption>[Caption for photo 1.]</figcaption>
+        </figure>
+        <figure class="photo">
+          <img src="images/photo-2.jpg" alt="[Describe photo 2]" width="1600" height="1067" loading="lazy">
+          <figcaption>[Caption for photo 2.]</figcaption>
+        </figure>
+      </div>
+    </section>
+    -->
+
+    <!-- =====================================================================
+         OPTION B: WRITTEN PIECE in the reading column.
+         To use: delete OPTION A above, then remove the comment markers
+         ( the lines with <!-  - and -  -> ) around this block.
+         =====================================================================
+    <section class="section section--tight" aria-label="Story">
+      <div class="container container--reading prose">
+        <p>[First paragraph of your story.]</p>
+        <p>[Second paragraph.]</p>
+        <blockquote class="pullquote">
+          <p>“[A strong quote from a source.]”</p>
+          <footer>[SOURCE NAME], [TITLE]</footer>
+        </blockquote>
+        <h2>[Subhead]</h2>
+        <p>[More paragraphs.]</p>
+      </div>
+    </section>
+    ===================================================================== -->
+
+    <!-- =====================================================================
+         OPTION C: VIDEO. Same 16:9 embed frame as the Digital Story page.
+         To use: delete OPTION A, remove the comment markers, and paste your
+         YouTube/Vimeo <iframe> where indicated (delete its width/height).
+         =====================================================================
+    <section class="section section--tight" aria-label="Video">
+      <div class="container container--reading">
+        <div class="video-frame">
+          PASTE YOUR <iframe ...></iframe> HERE
+        </div>
+        <p class="video-meta">[Runtime] · [Credits]</p>
+      </div>
+    </section>
+    ===================================================================== -->
+
+    <!-- START optional: back link -->
+    <section class="section section--tight">
+      <div class="container container--reading">
+        <a class="btn btn--outline" href="digital-story.html">← Back to the digital story</a>
+      </div>
+    </section>
+    <!-- END optional: back link -->
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- EDIT: [YEAR] fills in automatically; replace [YOUR NAME] -->
+      <p>© <span data-year>[YEAR]</span> [YOUR NAME] · Student at UNC-Chapel Hill</p>
+      <ul class="footer-links">
+        <!-- EDIT: your email, LinkedIn and Instagram links -->
+        <li><a href="mailto:[YOUR EMAIL]">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

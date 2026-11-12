@@ -1,0 +1,792 @@
+/* =====================================================================
+   DIGITAL STORY PACKAGE — shared stylesheet
+   A quieter, "dialed-back" take on The Disappearing Bookshelf infographic.
+
+   HOW THIS FILE IS ORGANIZED
+     1. Design tokens (colors, fonts, spacing)  ← change the whole look here
+     2. Base / reset
+     3. Layout helpers (containers, sections)
+     4. Header + navigation
+     5. Footer
+     6. Reusable components (eyebrow headings, hero, callout, cards,
+        buttons, chips, placeholders)
+     7. Page-specific pieces (infographic band, video, photo grid, contact)
+     8. Lightbox
+     9. Motion + accessibility preferences
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. DESIGN TOKENS
+   Every color, font and spacing value used on the site lives here.
+   --------------------------------------------------------------------- */
+:root {
+  /* Colors (sampled from the infographic) */
+  --crimson:      #A6192E;  /* primary accent: links, buttons, labels, hero */
+  --crimson-dark: #7F1323;  /* hover / pressed */
+  --gold:         #A88B16;  /* hairline rules & underlines ONLY (not text) */
+  --gold-soft:    #BEA665;  /* card borders, dividers */
+  --yellow:       #FFDE59;  /* ONLY on crimson/dark backgrounds */
+  --parchment:    #E4D2B5;  /* infographic background: used for the band */
+  --cream:        #F4EAD6;  /* card fill */
+  --paper:        #FBF7EF;  /* main page background */
+  --ink:          #120F0C;  /* body text & headings */
+  --ink-soft:     #5F4138;  /* captions, metadata, secondary text */
+  --white:        #FFFFFF;
+
+  /* Fonts */
+  --font-body:    "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Fredoka", "Inter", system-ui, sans-serif; /* site title & big page titles only */
+
+  /* Type scale */
+  --text-sm:   0.875rem;   /* 14px */
+  --text-base: 1.0625rem;  /* 17px */
+  --text-lg:   1.1875rem;  /* 19px */
+  --text-xl:   1.5rem;
+  --text-2xl:  clamp(1.6rem, 1.2rem + 1.6vw, 2.25rem);   /* section headings */
+  --text-3xl:  clamp(2.25rem, 1.5rem + 3.2vw, 3.75rem);  /* page titles */
+  --leading:   1.65;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  /* Layout widths */
+  --max-width:     1100px;  /* general content */
+  --reading-width: 760px;   /* reading column (articles, video) */
+  --gutter:        clamp(1rem, 4vw, 2rem);
+
+  /* Shapes & effects */
+  --radius:     15px;
+  --radius-sm:  8px;
+  --hairline:   1px solid var(--gold-soft);
+  --shadow:     0 1px 2px rgba(18, 15, 12, 0.04), 0 6px 18px rgba(18, 15, 12, 0.05);
+  --header-h:   64px;
+  --transition: 180ms ease;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. BASE / RESET
+   --------------------------------------------------------------------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-padding-top: calc(var(--header-h) + 1rem); /* anchors clear the sticky header */
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading);
+  font-feature-settings: "cv11", "ss01"; /* slightly friendlier Inter glyphs */
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img, video, iframe { max-width: 100%; display: block; }
+img { height: auto; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-body);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  margin: 0 0 var(--space-4);
+  color: var(--ink);
+}
+h2 { font-size: var(--text-2xl); }
+h3, .h3 { font-size: var(--text-xl); letter-spacing: -0.01em; }
+
+p { margin: 0 0 var(--space-4); }
+p:last-child { margin-bottom: 0; }
+
+a {
+  color: var(--crimson);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color var(--transition);
+}
+a:hover { color: var(--crimson-dark); }
+
+/* Visible, consistent focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Skip link: hidden until focused */
+.skip-link {
+  position: absolute;
+  left: var(--space-4);
+  top: -100px;
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  background: var(--crimson);
+  color: var(--white);
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+}
+.skip-link:focus { top: var(--space-3); color: var(--white); }
+
+/* Screen-reader-only text */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0);
+  white-space: nowrap; border: 0;
+}
+
+
+/* ---------------------------------------------------------------------
+   3. LAYOUT HELPERS
+   --------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: calc(var(--max-width) + var(--gutter) * 2);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.container--reading {
+  max-width: calc(var(--reading-width) + var(--gutter) * 2);
+}
+
+.section { padding-block: var(--space-8); }
+.section--tight { padding-block: var(--space-7); }
+.section + .section:not(.section--parchment) { padding-top: 0; }   /* avoid doubled gaps between sections */
+.section--parchment { background: var(--parchment); }
+
+/* Centered short gold divider between big blocks */
+.divider {
+  width: 64px;
+  height: 0;
+  border: 0;
+  border-top: 2px solid var(--gold);
+  margin: var(--space-8) auto;
+}
+
+.lead { font-size: var(--text-lg); color: var(--ink); }
+.muted { color: var(--ink-soft); }
+.small { font-size: var(--text-sm); }
+
+
+/* ---------------------------------------------------------------------
+   4. HEADER + NAVIGATION
+   --------------------------------------------------------------------- */
+.site-header {
+  position: sticky;   /* remove this line if you don't want a sticky header */
+  top: 0;
+  z-index: 50;
+  background: rgba(251, 247, 239, 0.94);
+  backdrop-filter: saturate(140%) blur(8px);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: var(--hairline);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  min-height: var(--header-h);
+}
+
+.site-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.005em;
+  color: var(--crimson);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.site-title:hover { color: var(--crimson-dark); }
+
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__link {
+  position: relative;
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav__link:hover { color: var(--crimson); }
+
+/* Current page: crimson text + thin gold underline */
+.nav__link[aria-current="page"] { color: var(--crimson); font-weight: 600; }
+.nav__link[aria-current="page"]::after {
+  content: "";
+  position: absolute;
+  left: var(--space-3);
+  right: var(--space-3);
+  bottom: 2px;
+  height: 2px;
+  background: var(--gold);
+}
+
+/* Hamburger button (hidden on desktop) */
+.nav-toggle {
+  display: none;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background: transparent;
+  border: 1px solid var(--gold-soft);
+  border-radius: var(--radius-sm);
+  color: var(--ink);
+  font: 600 var(--text-sm) var(--font-body);
+  cursor: pointer;
+}
+.nav-toggle__bars,
+.nav-toggle__bars::before,
+.nav-toggle__bars::after {
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--transition), opacity var(--transition);
+}
+.nav-toggle__bars { position: relative; }
+.nav-toggle__bars::before,
+.nav-toggle__bars::after { content: ""; position: absolute; left: 0; }
+.nav-toggle__bars::before { top: -6px; }
+.nav-toggle__bars::after  { top: 6px; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars { background: transparent; }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::before { transform: translateY(6px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] .nav-toggle__bars::after  { transform: translateY(-6px) rotate(-45deg); }
+
+@media (max-width: 760px) {
+  .nav-toggle { display: inline-flex; }
+
+  .nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: var(--hairline);
+    box-shadow: 0 12px 24px rgba(18, 15, 12, 0.06);
+  }
+  /* Menu is hidden only once JS has loaded (so no-JS visitors still get links) */
+  .js .nav { display: none; }
+  .js .nav.is-open { display: block; }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: var(--space-2) var(--gutter) var(--space-4);
+  }
+  .nav__link { padding: var(--space-3) 0; font-size: 1rem; border-bottom: 1px solid rgba(190, 166, 101, 0.35); }
+  .nav__list li:last-child .nav__link { border-bottom: 0; }
+  .nav__link[aria-current="page"]::after { left: 0; right: auto; width: 2.5rem; bottom: 8px; }
+}
+/* Without JS, the mobile nav simply sits under the header */
+@media (max-width: 760px) {
+  html:not(.js) .nav { position: static; box-shadow: none; }
+  html:not(.js) .site-header__inner { flex-wrap: wrap; }
+  html:not(.js) .nav-toggle { display: none; }
+}
+
+
+/* ---------------------------------------------------------------------
+   5. FOOTER
+   --------------------------------------------------------------------- */
+.site-footer {
+  margin-top: var(--space-8);
+  border-top: var(--hairline);
+  padding-block: var(--space-6);
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3) var(--space-6);
+}
+.site-footer p { margin: 0; }
+.footer-links { display: flex; flex-wrap: wrap; gap: var(--space-4); list-style: none; margin: 0; padding: 0; }
+.footer-links a { color: var(--ink-soft); text-decoration: none; font-weight: 500; }
+.footer-links a:hover { color: var(--crimson); text-decoration: underline; }
+
+
+/* ---------------------------------------------------------------------
+   6. REUSABLE COMPONENTS
+   --------------------------------------------------------------------- */
+
+/* --- Eyebrow + heading + gold rule (the "Chapter I:" look) ----------- */
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--crimson);
+}
+.section-heading { margin-bottom: var(--space-6); }
+.section-heading h2,
+.section-heading h1 { margin-bottom: var(--space-3); }
+.section-heading::after {      /* short gold rule under the heading */
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  background: var(--gold);
+}
+.section-heading p { margin-top: var(--space-4); color: var(--ink-soft); }
+.section-heading--center { text-align: center; }
+.section-heading--center::after { margin-inline: auto; }
+
+/* Big page title (Fredoka) for simple pages */
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+.page-intro { padding-top: var(--space-8); padding-bottom: var(--space-6); }
+
+/* --- Hero block: crimson panel + thin gold inset border -------------- */
+.hero {
+  position: relative;
+  background: var(--crimson);
+  color: var(--cream);
+  border-radius: var(--radius);
+  padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.5rem, 6vw, 4rem);
+  text-align: center;
+  outline: 1.5px solid var(--gold);   /* the inset gold frame */
+  outline-offset: -12px;
+}
+.hero .eyebrow { color: var(--cream); opacity: 0.9; margin-bottom: var(--space-4); }
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  line-height: 1.05;
+  letter-spacing: -0.005em;
+  color: var(--yellow);
+  margin: 0 auto var(--space-4);
+  max-width: 18ch;
+}
+.hero__dek {
+  font-size: clamp(1.1rem, 1rem + 0.6vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--white);
+  margin: 0 auto var(--space-5);
+  max-width: 34ch;
+}
+.hero__byline {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+.hero__byline .sep { margin-inline: var(--space-2); color: var(--yellow); }
+
+/* Smaller hero variant (used on Home) */
+.hero--small { padding: clamp(2rem, 5vw, 3rem) clamp(1.25rem, 5vw, 3rem); text-align: left; }
+.hero--small .hero__title { margin-left: 0; font-size: clamp(2rem, 1.4rem + 2.6vw, 3.1rem); }
+.hero--small .hero__dek { margin-left: 0; }
+
+/* --- Callout: crimson left bar + bold crimson lead-in ---------------- */
+.callout {
+  background: var(--cream);
+  border-left: 6px solid var(--crimson);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: var(--space-5) var(--space-6);
+  font-size: var(--text-lg);
+}
+.callout__lead { font-weight: 700; color: var(--crimson); }
+.callout--parchment { background: var(--parchment); }
+.callout p + p { margin-top: var(--space-4); }
+
+/* --- Pull quote ------------------------------------------------------ */
+.pullquote {
+  margin: 0;
+  padding: var(--space-5) 0 var(--space-5) var(--space-6);
+  border-left: 6px solid var(--crimson);
+}
+.pullquote p {
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+}
+.pullquote footer { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--ink-soft); }
+
+/* --- Cards ---------------------------------------------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--cream);
+  border: var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(18,15,12,.05), 0 12px 28px rgba(18,15,12,.08); }
+.card__media { aspect-ratio: 16 / 10; background: var(--parchment); border-bottom: var(--hairline); overflow: hidden; }
+.card__media img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+.card__body { padding: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); flex: 1; }
+.card__body h3 { margin: 0; }
+.card__body p { color: var(--ink-soft); margin: 0; }
+.card__link { margin-top: auto; padding-top: var(--space-3); font-weight: 600; text-decoration: none; }
+.card__link::after { content: ""; position: absolute; inset: 0; } /* whole card clickable */
+.card { position: relative; }
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-6);
+}
+
+/* --- Buttons --------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 0.7rem 1.35rem;
+  border: 1.5px solid var(--crimson);
+  border-radius: 999px;
+  background: var(--crimson);
+  color: var(--white);
+  font: 600 0.95rem/1.2 var(--font-body);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.btn:hover { background: var(--crimson-dark); border-color: var(--crimson-dark); color: var(--white); }
+.btn--outline { background: transparent; color: var(--crimson); }
+.btn--outline:hover { background: var(--crimson); color: var(--white); }
+.btn-row { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-5); }
+
+/* --- Chips (skills / tools) ----------------------------------------- */
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; margin: 0; padding: 0; }
+.chips li {
+  padding: 0.35rem 0.85rem;
+  background: var(--cream);
+  border: var(--hairline);
+  border-radius: 999px;
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+/* --- Checklist (Epilogue / Takeaways) ------------------------------- */
+.checklist { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.checklist li { position: relative; padding-left: 2rem; }
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.45em;
+  width: 0.95rem;
+  height: 0.5rem;
+  border-left: 3px solid var(--crimson);
+  border-bottom: 3px solid var(--crimson);
+  transform: rotate(-45deg);
+}
+
+/* --- Sources list ---------------------------------------------------- */
+.sources { font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.55; padding-left: 1.2rem; margin: 0; }
+.sources li + li { margin-top: var(--space-2); }
+.sources a { color: var(--ink-soft); word-break: break-word; }
+.sources a:hover { color: var(--crimson); }
+
+/* --- Placeholder boxes (swap these for real images) ----------------- */
+.placeholder {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  background: var(--cream);
+  border: 1.5px dashed var(--gold-soft);
+  border-radius: var(--radius);
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-align: center;
+  padding: var(--space-4);
+}
+.placeholder--square   { aspect-ratio: 1 / 1; }
+.placeholder--portrait { aspect-ratio: 4 / 5; }
+.placeholder--wide     { aspect-ratio: 3 / 2; }
+.placeholder--card     { aspect-ratio: 16 / 10; border-radius: 0; border: 0; }
+
+
+/* ---------------------------------------------------------------------
+   7. PAGE-SPECIFIC PIECES
+   --------------------------------------------------------------------- */
+
+/* --- Home intro ------------------------------------------------------ */
+.intro-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 260px;
+  gap: var(--space-7);
+  align-items: center;
+}
+.intro-grid .headshot { max-width: 260px; width: 100%; }
+.intro-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-3xl);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  margin-bottom: var(--space-3);
+}
+.descriptor { font-weight: 600; color: var(--crimson); margin-bottom: var(--space-5); }
+@media (max-width: 760px) {
+  .intro-grid { grid-template-columns: 1fr; gap: var(--space-6); }
+  .intro-grid .headshot { order: -1; max-width: 160px; }
+}
+
+/* --- Infographic band ----------------------------------------------- */
+.infographic-band {
+  background: var(--parchment);   /* matches the infographic's own background */
+  padding-block: var(--space-8);
+  margin-block: var(--space-5);
+}
+.infographic-band .section-heading p { color: var(--ink-soft); }
+.infographic {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.infographic img {
+  width: 100%;
+  height: auto;            /* never crop or stretch */
+  border-radius: var(--radius-sm);
+  /* no shadow on purpose: the image should melt into the parchment band */
+}
+.infographic figcaption {
+  margin-top: var(--space-4);
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+  text-align: center;
+}
+.infographic__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-3);
+}
+.infographic__actions a { font-weight: 600; font-size: var(--text-sm); }
+.infographic-trigger {
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+  width: 100%;
+}
+
+/* --- Video embed ---------------------------------------------------- */
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--cream);
+}
+.video-frame iframe,
+.video-frame video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.video-placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: var(--text-sm);
+}
+.video-placeholder__icon {
+  display: grid;
+  place-items: center;
+  width: clamp(56px, 12vw, 76px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--crimson);
+  box-shadow: 0 0 0 6px rgba(166, 25, 46, 0.12);
+}
+.video-placeholder__icon::before {   /* the play triangle */
+  content: "";
+  margin-left: 5px;
+  border-style: solid;
+  border-width: 11px 0 11px 18px;
+  border-color: transparent transparent transparent var(--white);
+}
+.video-placeholder strong { color: var(--ink); font-size: var(--text-base); }
+.video-meta { margin-top: var(--space-3); font-size: var(--text-sm); color: var(--ink-soft); }
+
+/* --- Photo essay ----------------------------------------------------- */
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); /* 2 columns on desktop, 1 on phones */
+  gap: var(--space-6) var(--space-5);
+}
+.photo { margin: 0; }
+.photo img { width: 100%; border-radius: var(--radius-sm); }
+.photo figcaption { margin-top: var(--space-2); font-size: var(--text-sm); color: var(--ink-soft); line-height: 1.5; }
+.photo--wide { grid-column: 1 / -1; }
+
+.photo-stack { display: grid; gap: var(--space-7); }
+
+/* --- Article body (written work sample) ----------------------------- */
+.prose > * + * { margin-top: var(--space-4); }
+.prose h2 { margin-top: var(--space-7); font-size: var(--text-xl); }
+.prose p { margin-bottom: 0; }
+
+/* --- About ---------------------------------------------------------- */
+.about-grid {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  gap: var(--space-7);
+  align-items: start;
+}
+@media (max-width: 760px) {
+  .about-grid { grid-template-columns: 1fr; gap: var(--space-5); }
+  .about-grid .headshot { max-width: 200px; }
+}
+.subhead { font-size: var(--text-lg); margin: var(--space-7) 0 var(--space-4); }
+
+/* --- Contact -------------------------------------------------------- */
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3); }
+.contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-4) var(--space-5);
+  background: var(--cream);
+  border: var(--hairline);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color var(--transition), transform var(--transition);
+}
+.contact-row:hover { border-color: var(--crimson); color: var(--ink); transform: translateX(2px); }
+.contact-row__label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--crimson); }
+.contact-row__value { display: block; font-weight: 600; word-break: break-word; }
+.contact-row__arrow { color: var(--crimson); font-weight: 600; flex-shrink: 0; }
+
+.form { display: grid; gap: var(--space-4); }
+.form label { display: block; font-weight: 600; font-size: var(--text-sm); margin-bottom: var(--space-1); }
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  background: var(--white);
+  border: 1px solid var(--gold-soft);
+  border-radius: var(--radius-sm);
+  font: inherit;
+  color: var(--ink);
+}
+.form input:focus,
+.form textarea:focus { outline: 2px solid var(--crimson); outline-offset: 1px; border-color: var(--crimson); }
+.form textarea { min-height: 150px; resize: vertical; }
+.form .btn { justify-self: start; }
+
+
+/* ---------------------------------------------------------------------
+   8. LIGHTBOX (uses the native <dialog> element)
+   --------------------------------------------------------------------- */
+.lightbox {
+  width: min(960px, 100vw - 2rem);
+  max-height: calc(100vh - 2rem);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--parchment);
+  color: var(--ink);
+  overflow: hidden;
+}
+.lightbox::backdrop { background: rgba(18, 15, 12, 0.78); }
+.lightbox__bar {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  background: var(--paper);
+  border-bottom: var(--hairline);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+.lightbox__scroll { max-height: calc(100vh - 2rem - 56px); overflow-y: auto; padding: var(--space-4); }
+.lightbox__scroll img { width: 100%; height: auto; }
+.lightbox__close { padding: 0.4rem 0.9rem; font-size: var(--text-sm); }
+
+
+/* ---------------------------------------------------------------------
+   9. MOTION + ACCESSIBILITY PREFERENCES
+   --------------------------------------------------------------------- */
+/* Gentle fade-in for elements with the .reveal class (added by script.js) */
+.js .reveal { opacity: 0; transform: translateY(10px); transition: opacity 600ms ease, transform 600ms ease; }
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js .reveal { opacity: 1; transform: none; }
+  .card:hover, .contact-row:hover { transform: none; }
+}
+
+/* ---------------------------------------------------------------------
+   SMALL-SCREEN TWEAKS (phones)
+   --------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .callout { padding: var(--space-4) var(--space-4) var(--space-4) var(--space-5); font-size: var(--text-base); }
+  .pullquote { padding-left: var(--space-5); }
+  .hero { outline-offset: -8px; }
+  .section { padding-block: var(--space-7); }
+  .infographic-band { padding-block: var(--space-7); }
+}

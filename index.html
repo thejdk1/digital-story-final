@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>[YOUR NAME] · Multimedia Portfolio</title>
+  <meta name="description" content="[YOUR NAME], multimedia storyteller at the UNC Hussman School of Journalism and Media.">
+
+  <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- EDIT: your name or site title -->
+      <a class="site-title" href="index.html">[YOUR NAME]</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <!-- aria-current="page" marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="index.html" aria-current="page">Home</a></li>
+          <!-- marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="digital-story.html">Digital Story</a></li>
+          <li><a class="nav__link" href="work-sample.html">Work Sample</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== INTRO ===================== -->
+    <section class="section" aria-labelledby="intro-name">
+      <div class="container">
+        <div class="intro-grid">
+          <div class="reveal">
+            <span class="eyebrow">Portfolio</span>
+            <!-- EDIT: your name -->
+            <h1 class="intro-name" id="intro-name">[YOUR NAME]</h1>
+            <!-- EDIT: one-line descriptor -->
+            <p class="descriptor">Multimedia storyteller · UNC Hussman School of Journalism and Media</p>
+            <!-- EDIT: short welcome paragraph -->
+            <p class="lead">[WELCOME PARAGRAPH] Welcome! I'm a student at UNC-Chapel Hill who tells stories with words, data, photos and video. This site collects my digital story package and a sample of my other work.</p>
+            <div class="btn-row">
+              <a class="btn" href="digital-story.html">See the digital story</a>
+              <a class="btn btn--outline" href="about.html">About me</a>
+            </div>
+          </div>
+
+          <!-- START optional: headshot. EDIT: replace the placeholder div with
+               <img src="images/headshot.jpg" alt="Portrait of [YOUR NAME]" width="800" height="1000" style="border-radius: var(--radius);"> -->
+          <div class="headshot">
+            <div class="placeholder placeholder--portrait">[HEADSHOT]</div>
+          </div>
+          <!-- END optional: headshot -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== FEATURED PROJECTS ===================== -->
+    <section class="section" aria-labelledby="featured-heading">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Featured work</span>
+          <h2 id="featured-heading">Projects</h2>
+        </div>
+
+        <div class="card-grid">
+          <!-- Card 1: Digital Story (thumbnail = top of the infographic) -->
+          <article class="card reveal">
+            <div class="card__media">
+              <img src="images/disappearing-bookshelf-infographic.png" width="1620" height="3750" loading="lazy" alt="">
+            </div>
+            <div class="card__body">
+              <span class="eyebrow">Digital Story</span>
+              <!-- EDIT: [STORY TITLE] -->
+              <h3>The Disappearing Bookshelf</h3>
+              <!-- EDIT: one-line description -->
+              <p>How screen time is crowding out childhood reading, told through an infographic and a video interview.</p>
+              <a class="card__link" href="digital-story.html">View project →</a>
+            </div>
+          </article>
+
+          <!-- Card 2: Work Sample. EDIT: replace the placeholder div with
+               <img src="images/your-thumbnail.jpg" width="1600" height="1000" loading="lazy" alt=""> -->
+          <article class="card reveal">
+            <div class="card__media">
+              <div class="placeholder placeholder--card">[WORK SAMPLE THUMBNAIL]</div>
+            </div>
+            <div class="card__body">
+              <span class="eyebrow">Work Sample</span>
+              <!-- EDIT: [WORK SAMPLE TITLE] -->
+              <h3>[WORK SAMPLE TITLE]</h3>
+              <!-- EDIT: one-line description -->
+              <p>[One-line description of your photo essay, article or video.]</p>
+              <a class="card__link" href="work-sample.html">View project →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- START optional: parchment quote band (delete if you want Home even simpler) -->
+    <section class="section section--parchment" aria-label="About this portfolio">
+      <div class="container container--reading">
+        <div class="callout">
+          <!-- EDIT: a short statement about your work or this package -->
+          <p><span class="callout__lead">What I do:</span> [One or two sentences about the stories you like to tell and why.]</p>
+        </div>
+      </div>
+    </section>
+    <!-- END optional: parchment quote band -->
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- EDIT: [YEAR] fills in automatically; replace [YOUR NAME] -->
+      <p>© <span data-year>[YEAR]</span> [YOUR NAME] · Student at UNC-Chapel Hill</p>
+      <ul class="footer-links">
+        <!-- EDIT: your email, LinkedIn and Instagram links -->
+        <li><a href="mailto:[YOUR EMAIL]">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+</body>
+</html>

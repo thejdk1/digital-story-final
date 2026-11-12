@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- EDIT: page title shown in the browser tab -->
+  <title>The Disappearing Bookshelf · Digital Story · [YOUR NAME]</title>
+  <!-- EDIT: one-sentence summary used by search engines and link previews -->
+  <meta name="description" content="A digital story on how screen time is crowding out childhood reading, with an infographic and a video interview.">
+
+  <!-- Fonts: Inter (body/headings) + Fredoka (display titles) from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <!-- EDIT: your name or site title -->
+      <a class="site-title" href="index.html">[YOUR NAME]</a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__bars" aria-hidden="true"></span>
+        <span>Menu</span>
+      </button>
+
+      <nav class="nav" id="site-nav" aria-label="Main">
+        <ul class="nav__list">
+          <li><a class="nav__link" href="index.html">Home</a></li>
+          <!-- aria-current="page" marks the page you're on (crimson + gold underline) -->
+          <li><a class="nav__link" href="digital-story.html" aria-current="page">Digital Story</a></li>
+          <li><a class="nav__link" href="work-sample.html">Work Sample</a></li>
+          <li><a class="nav__link" href="about.html">About</a></li>
+          <li><a class="nav__link" href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ===================== a) HERO / TITLE ===================== -->
+    <section class="section section--tight" aria-labelledby="story-title">
+      <div class="container">
+        <div class="hero">
+          <span class="eyebrow">Digital Story</span>
+          <!-- EDIT: [STORY TITLE] -->
+          <h1 class="hero__title" id="story-title">The Disappearing Bookshelf</h1>
+          <!-- EDIT: [one-line dek] -->
+          <p class="hero__dek">The dangers of letting screentime overpower storytime</p>
+          <!-- EDIT: By [YOUR NAME] · [DATE] -->
+          <p class="hero__byline">By [YOUR NAME]<span class="sep" aria-hidden="true">·</span>[DATE]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== b) INTRODUCTION ===================== -->
+    <section class="section section--tight" aria-label="Introduction">
+      <div class="container container--reading">
+        <div class="callout reveal">
+          <!-- EDIT: replace with your introduction (1–2 paragraphs) -->
+          <p><span class="callout__lead">The story:</span> [INTRO PARAGRAPH 1] Screens are filling more of children's waking hours every year, while the share of kids who read for fun has fallen to a 20-year low. This package looks at what that shift costs, and what families can do about it.</p>
+          <p>[INTRO PARAGRAPH 2 — optional] Start with the infographic for the numbers, then hear from [INTERVIEWEE NAME], [INTERVIEWEE ROLE], in the video interview below.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== c) INFOGRAPHIC ===================== -->
+    <!-- The band's background is --parchment, the same color as the infographic,
+         so the image blends into the page. The image is never cropped. -->
+    <section class="infographic-band" aria-labelledby="infographic-heading">
+      <div class="container">
+        <div class="section-heading section-heading--center">
+          <span class="eyebrow">Infographic</span>
+          <!-- EDIT: short heading for the infographic -->
+          <h2 id="infographic-heading">Screen time vs. storytime, by the numbers</h2>
+        </div>
+
+        <figure class="infographic">
+          <!-- EDIT: swap the image file at images/disappearing-bookshelf-infographic.png
+               (keep width/height matching your image's real pixel size) -->
+          <a class="infographic-trigger" href="images/disappearing-bookshelf-infographic.png" data-lightbox
+             aria-label="View the infographic full size">
+            <img
+              src="images/disappearing-bookshelf-infographic.png"
+              width="1620" height="3750"
+              loading="lazy" decoding="async"
+              alt="Infographic titled The Disappearing Bookshelf: the dangers of letting screentime overpower storytime. Central idea: screens fill growing hours, but shared reading builds the language and literacy skills they don't. Chapter I lists the benefits of early reading, including brain growth, stronger language skills, 1.4 million more words heard by age 5, confidence and focus, and emotional insight. Chapter II shows falling reading rates: only 32.7% of 8- to 18-year-olds enjoy reading, the lowest in 20 years; 18.7% read daily in their free time; 44.5% of 5- to 8-year-olds read daily; and reading-score drops were 1.5 times bigger in grades 3 to 5 than in middle school. Chapter III charts average daily screen time by age, rising from about 1 hour under age 2 to 2 hours 8 minutes at ages 2 to 4, 3 hours 28 minutes at 5 to 8, 5 hours 33 minutes at 8 to 12, and 8 hours 39 minutes for teens 13 to 18. The epilogue recommends reading together every day from birth, swapping a screen for a book in the car, at meals and at bedtime, and letting older kids choose books tied to their hobbies.">
+          </a>
+          <figcaption>
+            <!-- EDIT: caption / credit -->
+            Infographic by [YOUR NAME]. Data from the American Academy of Pediatrics, Common Sense Media, the National Literacy Trust and others (see Sources).
+            <span class="infographic__actions">
+              <a href="images/disappearing-bookshelf-infographic.png" data-lightbox>View full size</a>
+              <a href="files/disappearing-bookshelf-infographic.pdf" download>Download PDF</a>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===================== d) VIDEO INTERVIEW ===================== -->
+    <section class="section" aria-labelledby="video-heading">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <span class="eyebrow">Video</span>
+          <!-- EDIT: [Interview title] -->
+          <h2 id="video-heading">[Interview title]</h2>
+          <!-- EDIT: one-sentence description of the interview -->
+          <p>[One sentence describing who you interviewed and what they discuss.]</p>
+        </div>
+
+        <div class="video-frame">
+          <!-- EDIT: replace with your interview embed
+               1. On YouTube: Share → Embed → copy the <iframe> code.
+                  (Vimeo: Share → Embed → copy.)
+               2. DELETE the whole <div class="video-placeholder"> ... </div> block below.
+               3. Paste your <iframe> here. Delete its width="" and height="" attributes;
+                  the frame resizes itself to 16:9. Example:
+
+               <iframe src="https://www.youtube.com/embed/VIDEO_ID"
+                       title="[Interview title]" loading="lazy"
+                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                       allowfullscreen></iframe>
+          -->
+          <div class="video-placeholder">
+            <span class="video-placeholder__icon" aria-hidden="true"></span>
+            <strong>Video interview coming soon</strong>
+            <span>Paste your YouTube or Vimeo embed here</span>
+          </div>
+        </div>
+        <!-- EDIT: runtime / credit line (or delete) -->
+        <p class="video-meta">[Runtime, e.g. 4:30] · Filmed and edited by [YOUR NAME]</p>
+      </div>
+    </section>
+
+
+    <!-- ===================== e) OPTIONAL EXTRAS =====================
+         Each block below is independent. Delete any you don't need,
+         from its START comment to its END comment. -->
+
+    <!-- START optional: pull quote -->
+    <section class="section section--tight" aria-label="Pull quote">
+      <div class="container container--reading">
+        <blockquote class="pullquote reveal">
+          <!-- EDIT: a strong line from your interview -->
+          <p>“[A memorable quote from your interview goes here.]”</p>
+          <footer>[SPEAKER NAME], [TITLE / AFFILIATION]</footer>
+        </blockquote>
+      </div>
+    </section>
+    <!-- END optional: pull quote -->
+
+    <!-- START optional: epilogue / takeaways -->
+    <section class="section section--tight" aria-labelledby="epilogue-heading">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <span class="eyebrow">Epilogue</span>
+          <h2 id="epilogue-heading">Takeaways</h2>
+        </div>
+        <!-- EDIT: your takeaways -->
+        <ul class="checklist">
+          <li>Read together every day from birth; early words add up for years.</li>
+          <li>Swap a screen for a book in the car, at meals and at bedtime.</li>
+          <li>Let older kids choose books tied to their hobbies, movies and shows.</li>
+        </ul>
+      </div>
+    </section>
+    <!-- END optional: epilogue / takeaways -->
+
+    <!-- START optional: sources -->
+    <section class="section section--tight" aria-labelledby="sources-heading">
+      <div class="container container--reading">
+        <div class="section-heading">
+          <span class="eyebrow">Sources</span>
+          <h2 id="sources-heading" class="h3">Where the numbers come from</h2>
+        </div>
+        <!-- EDIT: add, remove or reformat sources -->
+        <ol class="sources">
+          <li>American Academy of Pediatrics. (2026, June 22). <em>Average amount of screen time for children and young adults.</em> (Tween and teen figures cite Rideout et al., 2022.)</li>
+          <li>Mann, S., Calvin, A., Lenhart, A., &amp; Robb, M. B. (2025). <em>The Common Sense census: Media use by kids zero to eight, 2025.</em> Common Sense Media.</li>
+          <li>Maryville University Online. (2025, June 24). <em>Literacy development in children.</em></li>
+          <li>National Literacy Trust. (2025). <em>Children and young people’s reading in 2025.</em></li>
+          <li>Kuhfeld, M., Lewis, K., &amp; Peltier, T. (2022). Reading achievement declines during the COVID-19 pandemic: Evidence from 5 million U.S. students in grades 3–8. <em>Reading and Writing, 36</em>(2), 245–261.</li>
+        </ol>
+      </div>
+    </section>
+    <!-- END optional: sources -->
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <!-- EDIT: [YEAR] fills in automatically; replace [YOUR NAME] -->
+      <p>© <span data-year>[YEAR]</span> [YOUR NAME] · Student at UNC-Chapel Hill</p>
+      <ul class="footer-links">
+        <!-- EDIT: your email, LinkedIn and Instagram links -->
+        <li><a href="mailto:[YOUR EMAIL]">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/[YOUR-LINKEDIN]" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://www.instagram.com/[YOUR-INSTAGRAM]" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Lightbox for "View full size" (opened by script.js) -->
+  <dialog class="lightbox" id="lightbox" aria-label="Infographic, full size">
+    <div class="lightbox__bar">
+      <span>The Disappearing Bookshelf · full size</span>
+      <button class="btn btn--outline lightbox__close" type="button">Close</button>
+    </div>
+    <div class="lightbox__scroll">
+      <img src="images/disappearing-bookshelf-infographic.png" loading="lazy" alt="Full-size version of the infographic. A text summary is on the page behind this window." width="1620" height="3750">
+    </div>
+  </dialog>
+</body>
+</html>
